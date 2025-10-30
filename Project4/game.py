@@ -1,27 +1,20 @@
 class TicTacToe:
     def __init__(self):
-        self.board = [['' for n in range(3)] for n in range(3)]
+        self.board = [' ' for n in range(9)]
         self.current_winner = None 
-
     def print_board(self):
         for i in range(3):
-            for j in range(3):
-                print(f"| {self.board[i][j]} ", end = '')
-            print("|")
-
-    def win(self,c:str) -> bool:
-        if ((self.board[0][0] == c and self.board[0][1] == c and self.board[0][2] == c) or
-            (self.board[1][0] == c and self.board[1][1] == c and self.board[1][2] == c) or 
-            (self.board[2][0] == c and self.board[2][1] == c and self.board[2][2] == c)):
-            return True
-        if ((self.board[0][0] == c and self.board[1][0] == c and self.board[2][0] == c) or
-            (self.board[0][1] == c and self.board[1][1] == c and self.board[2][1] == c) or
-            (self.board[0][2] == c and self.board[1][2] == c and self.board[2][2] == c) ):
-            return True
-        if ((self.board[0][0] == c and self.board[1][1] == c and self.board[2][2] == c) or
-            (self.board[2][0] == c and self.board[1][1] == c and self.board[0][2] == c)):
-            return True
-        return False
-    
-    def game(self):
-        pass
+            row = self.board[i*3:(i+1)*3]
+            print("| " + " | ".join(row) + " |")
+    @staticmethod
+    def print_board_number():
+        temp = [str(i+1) for i in range(9)]
+        for i in range(3):
+            row = temp[i*3:(i+1)*3]
+            print("| " + " | ".join(row) + " |")
+    def avaliable_moves(self):
+        avaliable = []
+        for i,move in enumerate(self.board):
+            if move == " ":
+                avaliable.append(move)
+        return move
