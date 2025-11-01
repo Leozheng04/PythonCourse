@@ -1,5 +1,4 @@
 import random 
-import math 
 class Player:
     def __init__(self, letter):
         self.letter = letter
@@ -9,20 +8,20 @@ class ComputerPlayer(Player):
     def __init__(self,letter):
         super().__init__(letter)
     def get_move(self,game):
-        return random.choice(game.avaliable_moves())
+        return random.choice(game.available_moves())
 class HumanPlayer(Player):
     def __init__(self,letter):
         super().__init__(letter)
     def get_move(self,game):
-        valid_sqaure = False
+        valid_square = False
         val = None
-        while not valid_sqaure:
-            sqaure = input(f"{self.letter}'s turn. Input move (0-9)")
+        while not valid_square:
+            square = input(f"{self.letter}'s turn. Input move (0-8): ")
             try:
-                val = int(sqaure)
-                if val not in game.avaliable_moves():
+                val = int(square) - 1
+                if val not in game.available_moves():
                     raise ValueError
-                valid_sqaure = True
+                valid_square = True
             except ValueError:
-                print("Invalid Sqaure. Try again.")
+                print("Invalid square. Try again.")
         return val
