@@ -16,7 +16,7 @@ class HumanPlayer(Player):
         valid_square = False
         val = None
         while not valid_square:
-            square = input(f"{self.letter}'s turn. Input move (0-8): ")
+            square = input(f"{self.letter}'s turn. Input move (1-9): ")
             try:
                 val = int(square) - 1
                 if val not in game.available_moves():
